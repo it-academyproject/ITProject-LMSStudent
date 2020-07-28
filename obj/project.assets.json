@@ -6071,20 +6071,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pak\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Pak\\Documents\\Curso .NET\\Ejercicios\\PrácticaFinal\\Proyecto\\LMSStudent\\LMSStudent.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\ITAcademy\\ITProject\\iteration-10\\ITProject-LMSStudent\\LMSStudent.csproj",
       "projectName": "LMSStudent",
-      "projectPath": "C:\\Users\\Pak\\Documents\\Curso .NET\\Ejercicios\\PrácticaFinal\\Proyecto\\LMSStudent\\LMSStudent.csproj",
-      "packagesPath": "C:\\Users\\Pak\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Pak\\Documents\\Curso .NET\\Ejercicios\\PrácticaFinal\\Proyecto\\LMSStudent\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\ITAcademy\\ITProject\\iteration-10\\ITProject-LMSStudent\\LMSStudent.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\ITAcademy\\ITProject\\iteration-10\\ITProject-LMSStudent\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Pak\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -6130,7 +6135,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
