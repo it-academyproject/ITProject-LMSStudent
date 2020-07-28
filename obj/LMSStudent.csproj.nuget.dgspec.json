@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oriol_000\\Documents\\IT_Academy\\LMS_Students\\ITProject-LMSStudent\\LMSStudent.csproj": {}
+    "C:\\Users\\Usuario\\Desktop\\ITAcademy\\ITProject\\iteration-10\\ITProject-LMSStudent\\LMSStudent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oriol_000\\Documents\\IT_Academy\\LMS_Students\\ITProject-LMSStudent\\LMSStudent.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\ITAcademy\\ITProject\\iteration-10\\ITProject-LMSStudent\\LMSStudent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oriol_000\\Documents\\IT_Academy\\LMS_Students\\ITProject-LMSStudent\\LMSStudent.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\ITAcademy\\ITProject\\iteration-10\\ITProject-LMSStudent\\LMSStudent.csproj",
         "projectName": "LMSStudent",
-        "projectPath": "C:\\Users\\oriol_000\\Documents\\IT_Academy\\LMS_Students\\ITProject-LMSStudent\\LMSStudent.csproj",
-        "packagesPath": "C:\\Users\\oriol_000\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oriol_000\\Documents\\IT_Academy\\LMS_Students\\ITProject-LMSStudent\\obj\\",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\ITAcademy\\ITProject\\iteration-10\\ITProject-LMSStudent\\LMSStudent.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Usuario\\Desktop\\ITAcademy\\ITProject\\iteration-10\\ITProject-LMSStudent\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\oriol_000\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -79,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

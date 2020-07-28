@@ -147,3 +147,5 @@ C:\Users\oriol_000\Documents\IT_Academy\LMS_Students\ITProject-LMSStudent\bin\De
 C:\Users\oriol_000\Documents\IT_Academy\LMS_Students\ITProject-LMSStudent\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\oriol_000\Documents\IT_Academy\LMS_Students\ITProject-LMSStudent\obj\Debug\netcoreapp3.1\LMSStudent.csproj.CoreCompileInputs.cache
 C:\Users\oriol_000\Documents\IT_Academy\LMS_Students\ITProject-LMSStudent\obj\Debug\netcoreapp3.1\LMSStudent.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Usuario\Desktop\ITAcademy\ITProject\iteration-10\ITProject-LMSStudent\obj\Debug\netcoreapp3.1\LMSStudent.dll
+C:\Users\Usuario\Desktop\ITAcademy\ITProject\iteration-10\ITProject-LMSStudent\obj\Debug\netcoreapp3.1\LMSStudent.pdb
