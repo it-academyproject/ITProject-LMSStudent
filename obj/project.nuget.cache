@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eAxASflnJsePH7xZm/C8a2thq3HKxrwlDblpIEjeonQ7k4WCnKm+m55xEK1+X/FkEaAH042zObQRyMIksVcrkQ==",
+  "dgSpecHash": "gWuAeojLajczAhDNnrZEaDvvVOCMSoIqjopSwb0NqRuKk/PZZ6inLlIidbxCTdnOxzBPrOxZoZoZwk4+oJjkWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Pak\\Documents\\Curso .NET\\Ejercicios\\PrácticaFinal\\Proyecto\\LMSStudent\\LMSStudent.csproj",
   "expectedPackageFiles": [
@@ -26,9 +26,11 @@
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.6\\microsoft.entityframeworkcore.design.3.1.6.nupkg.sha512",
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\3.1.6\\microsoft.entityframeworkcore.inmemory.3.1.6.nupkg.sha512",
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.6\\microsoft.entityframeworkcore.relational.3.1.6.nupkg.sha512",
+    "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.relational.design\\1.1.6\\microsoft.entityframeworkcore.relational.design.1.1.6.nupkg.sha512",
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\3.1.6\\microsoft.entityframeworkcore.sqlite.3.1.6.nupkg.sha512",
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\3.1.6\\microsoft.entityframeworkcore.sqlite.core.3.1.6.nupkg.sha512",
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.6\\microsoft.entityframeworkcore.sqlserver.3.1.6.nupkg.sha512",
+    "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver.design\\1.1.6\\microsoft.entityframeworkcore.sqlserver.design.1.1.6.nupkg.sha512",
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.6\\microsoft.entityframeworkcore.tools.3.1.6.nupkg.sha512",
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.6\\microsoft.extensions.caching.abstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\Pak\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.6\\microsoft.extensions.caching.memory.3.1.6.nupkg.sha512",

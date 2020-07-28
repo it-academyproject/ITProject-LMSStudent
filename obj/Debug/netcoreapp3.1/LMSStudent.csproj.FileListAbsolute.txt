@@ -145,5 +145,7 @@ C:\Users\Pak\Documents\Curso .NET\Ejercicios\PrácticaFinal\Proyecto\LMSStudent\
 C:\Users\Pak\Documents\Curso .NET\Ejercicios\PrácticaFinal\Proyecto\LMSStudent\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\Pak\Documents\Curso .NET\Ejercicios\PrácticaFinal\Proyecto\LMSStudent\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Pak\Documents\Curso .NET\Ejercicios\PrácticaFinal\Proyecto\LMSStudent\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Pak\Documents\Curso .NET\Ejercicios\PrácticaFinal\Proyecto\LMSStudent\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\Pak\Documents\Curso .NET\Ejercicios\PrácticaFinal\Proyecto\LMSStudent\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
 C:\Users\Pak\Documents\Curso .NET\Ejercicios\PrácticaFinal\Proyecto\LMSStudent\obj\Debug\netcoreapp3.1\LMSStudent.csproj.CoreCompileInputs.cache
 C:\Users\Pak\Documents\Curso .NET\Ejercicios\PrácticaFinal\Proyecto\LMSStudent\obj\Debug\netcoreapp3.1\LMSStudent.MvcApplicationPartsAssemblyInfo.cache
