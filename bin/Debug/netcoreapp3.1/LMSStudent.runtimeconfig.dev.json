@@ -1,8 +1,13 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
+<<<<<<< HEAD
+      "C:\\Users\\oriol_000\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\oriol_000\\.nuget\\packages"
+=======
       "C:\\Users\\Pak\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Pak\\.nuget\\packages"
+>>>>>>> 1128eee73a70e27525de267fad2aa0985358d764
     ]
   }
 }
