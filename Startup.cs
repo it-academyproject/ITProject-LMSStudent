@@ -28,14 +28,11 @@ namespace LMSStudent
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-<<<<<<< HEAD
             services.AddDbContext<LMSStudentDBContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
-=======
             services.AddDbContext<EventContext>(opt =>
                opt.UseInMemoryDatabase("EventList"));
->>>>>>> 8c39424cc7f86a17d3c5ddebc55778e624eb2daa
             services.AddControllers();
         }
 
