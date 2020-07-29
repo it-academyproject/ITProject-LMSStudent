@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LMSStudent.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace LMSStudent.Controllers
 {
     [Route("api/events")]
     [ApiController]
+    [EnableCors("EventsPolicy")]
     public class EventsController : ControllerBase
     {
         private readonly EventContext _context;
