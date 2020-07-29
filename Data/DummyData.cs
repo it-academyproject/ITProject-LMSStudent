@@ -51,8 +51,8 @@ namespace LMSStudent.Data
                 {
                     var exercises = new List<Exercise>()
                     {
-                    new Exercise {AvailableTime = 2, ResourceId = 1},
-                    new Exercise {AvailableTime = 2, ResourceId = 2},
+                    new Exercise {AvailableTime = 2, ResourceId = 5},
+                    new Exercise {AvailableTime = 2, ResourceId = 4},
                     new Exercise {AvailableTime = 2, ResourceId = 3}
                     };
 
@@ -64,8 +64,8 @@ namespace LMSStudent.Data
                 {
                     var teachingMaterials = new List<TeachingMaterial>()
                     {
-                    new TeachingMaterial {Type = "Word", Link = "www.itacademy.com", ResourceId = 4},
-                    new TeachingMaterial {Type = "Excel", Link = "www.itacademy2.com", ResourceId = 5}
+                    new TeachingMaterial {Type = "Word", Link = "www.itacademy.com", ResourceId = 2},
+                    new TeachingMaterial {Type = "Excel", Link = "www.itacademy2.com", ResourceId = 1}
                     };
 
                     context.TeachingMaterials.AddRange(teachingMaterials);
