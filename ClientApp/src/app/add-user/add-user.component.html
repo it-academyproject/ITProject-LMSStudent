@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <h1 id="tableLabel">Add new user.</h1>
+
+  <p>Insert user information and click over 'Add' button.</p>
+  <form #workerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div>
+      <div class="form-group">
+        <label><b>Add user</b></label><br />
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" id="name" [(ngModel)]="userModel.name">
+      </div>
+      <div class="form-group">
+        <label>Surname</label>
+        <input type="text" class="form-control" name="surname" id="surname" [(ngModel)]="userModel.surname">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" id="email" [(ngModel)]="userModel.email">
+      </div>
+      <div class="form-group">
+        <label>Type of User</label>
+        <select class="custom-select" name="typeUsers" [(ngModel)]="userModel.type">
+          <option selected>User Type: </option>
+          <option *ngFor="let typeUser of typeUsers"> {{ typeUser }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>ID Itinerary</label>
+        <input type="number" class="form-control" name="itinerary" id="itinerary" [(ngModel)]="userModel.itinerary">
+      </div>
+      <button type="submit">Add</button>
+    </div>
+  </form>
+</body>
+</html>
