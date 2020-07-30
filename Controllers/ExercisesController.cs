@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LMSStudent.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace LMSStudent.Controllers
 {
@@ -14,10 +15,12 @@ namespace LMSStudent.Controllers
     public class ExercisesController : ControllerBase
     {
         private readonly LMSStudentDBContext _context;
+        private readonly ResourcesController _resourcesController;
 
         public ExercisesController(LMSStudentDBContext context)
         {
             _context = context;
+            _resourcesController = new ResourcesController(_context);
         }
 
         // GET: api/Exercises
@@ -34,7 +37,10 @@ namespace LMSStudent.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Exercise>> GetExercise(int id)
         {
-            var exercise = await _context.Exercises.FindAsync(id);
+            var exercise = await _context.Exercises
+                .Include(t => t.Resource)
+                .ThenInclude(r => r.Topic)
+                .SingleOrDefaultAsync(t => t.Id == id);
 
             if (exercise == null)
             {
@@ -59,6 +65,10 @@ namespace LMSStudent.Controllers
 
             try
             {
+                var resource = exercise.Resource;
+
+                await _resourcesController.PutResource(resource.Id, resource);
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -85,7 +95,7 @@ namespace LMSStudent.Controllers
             _context.Exercises.Add(exercise);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetExercise", new { id = exercise.Id }, exercise);
+            return CreatedAtAction(nameof(GetExercise), new { id = exercise.Id }, exercise);
         }
 
         // DELETE: api/Exercises/5

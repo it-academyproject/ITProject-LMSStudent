@@ -1,0 +1,32 @@
+<h2 id="tableLabel">Exercises</h2>
+
+<button [routerLink]='["/exercise-detail"]' class="btn-add">Add exercise</button>
+
+<p *ngIf="!exercises"><em>Loading...</em></p>
+
+<table *ngIf="exercises">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>File</th>
+      <th>Available Time</th>
+      <th>Topic</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let exercise of exercises">
+      <td>{{ exercise.id }}</td>
+      <td>{{ exercise.resource.name }}</td>
+      <td>{{ exercise.resource.description }}</td>
+      <td>{{ exercise.resource.file }}</td>
+      <td>{{ exercise.availableTime }}</td>
+      <td>{{ exercise.resource.topic.name }}</td>        
+      <td><button routerLink="/exercise-detail/{{exercise.id}}"
+        class="btn-update" title="update exercise">Select</button></td>
+      <td><button class="btn-delete" title="delete exercise"
+        (click)="delete(exercise)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -11,8 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using LMSStudent.Models;
+using LMSStudent.Data;
 
 namespace LMSStudent
 {
@@ -31,8 +30,17 @@ namespace LMSStudent
             services.AddDbContext<LMSStudentDBContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
-            services.AddDbContext<EventContext>(opt =>
-               opt.UseInMemoryDatabase("EventList"));
+            //services.AddDbContext<EventContext>(opt =>
+            //   opt.UseInMemoryDatabase("EventList"));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
+
             services.AddControllers();
         }
 
@@ -48,12 +56,16 @@ namespace LMSStudent
 
             app.UseRouting();
 
+            app.UseCors("CorsPolicy");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            DummyData.Initialize(app);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace LMSStudent.Migrations
+namespace LMSStudent.Data.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -28,7 +28,7 @@ namespace LMSStudent.Migrations
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     File = table.Column<string>(nullable: true),
-                    TopicId = table.Column<int>(nullable: true)
+                    TopicId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,7 @@ namespace LMSStudent.Migrations
                         column: x => x.TopicId,
                         principalTable: "Topics",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,7 +48,7 @@ namespace LMSStudent.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AvailableTime = table.Column<int>(nullable: false),
-                    ResourceId = table.Column<int>(nullable: true)
+                    ResourceId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,7 +58,7 @@ namespace LMSStudent.Migrations
                         column: x => x.ResourceId,
                         principalTable: "Resources",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,7 +69,7 @@ namespace LMSStudent.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<string>(nullable: true),
                     Link = table.Column<string>(nullable: true),
-                    ResourceId = table.Column<int>(nullable: true)
+                    ResourceId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,7 +79,7 @@ namespace LMSStudent.Migrations
                         column: x => x.ResourceId,
                         principalTable: "Resources",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

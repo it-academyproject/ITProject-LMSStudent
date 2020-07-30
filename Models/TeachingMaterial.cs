@@ -10,6 +10,7 @@ namespace LMSStudent.Models
         public int Id { get; set; }        
         public string Type { get; set; }
         public string Link { get; set; }
+        public int ResourceId { get; set; }
 
         public virtual Resource Resource { get; set; }
 

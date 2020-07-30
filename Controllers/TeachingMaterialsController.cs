@@ -14,10 +14,12 @@ namespace LMSStudent.Controllers
     public class TeachingMaterialsController : ControllerBase
     {
         private readonly LMSStudentDBContext _context;
+        private readonly ResourcesController _resourcesController;
 
         public TeachingMaterialsController(LMSStudentDBContext context)
         {
             _context = context;
+            _resourcesController = new ResourcesController(_context);
         }
 
         // GET: api/TeachingMaterials
@@ -34,7 +36,10 @@ namespace LMSStudent.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TeachingMaterial>> GetTeachingMaterial(int id)
         {
-            var teachingMaterial = await _context.TeachingMaterials.FindAsync(id);
+            var teachingMaterial = await _context.TeachingMaterials
+                .Include(t => t.Resource)
+                .ThenInclude(r => r.Topic)
+                .SingleOrDefaultAsync(t => t.Id == id);
 
             if (teachingMaterial == null)
             {
@@ -59,6 +64,9 @@ namespace LMSStudent.Controllers
 
             try
             {
+                var resource = teachingMaterial.Resource;
+                await _resourcesController.PutResource(resource.Id, resource);
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -81,11 +89,12 @@ namespace LMSStudent.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<TeachingMaterial>> PostTeachingMaterial(TeachingMaterial teachingMaterial)
-        {
-            _context.TeachingMaterials.Add(teachingMaterial);
+        {            
+            _context.TeachingMaterials.Add(teachingMaterial);            
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTeachingMaterial", new { id = teachingMaterial.Id }, teachingMaterial);
+            return CreatedAtAction(nameof(GetTeachingMaterial), new { id = teachingMaterial.Id }, teachingMaterial);
         }
 
         // DELETE: api/TeachingMaterials/5
