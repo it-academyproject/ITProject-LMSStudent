@@ -65,7 +65,7 @@ namespace LMSStudent
                 endpoints.MapControllers();
             });
 
-            DummyData.Initialize(app);
+            DummyData.AaaaInitialize(app);
         }
     }
 }
