@@ -29,9 +29,9 @@ namespace LMSStudent
         {
             services.AddDbContext<LMSStudentDBContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
-            //services.AddDbContext<EventContext>(opt =>
-            //   opt.UseInMemoryDatabase("EventList"));
+
+            services.AddDbContext<EventContext>(opt =>
+               opt.UseInMemoryDatabase("EventList"));
 
             services.AddCors(options =>
             {
