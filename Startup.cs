@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using LMSStudent.Models;
 
@@ -28,11 +29,16 @@ namespace LMSStudent
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<UsersContext>(opt =>
+               opt.UseInMemoryDatabase("UsersList"));
+
             services.AddDbContext<LMSStudentDBContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddDbContext<EventContext>(opt =>
                opt.UseInMemoryDatabase("EventList"));
+
             services.AddControllers();
         }
 
