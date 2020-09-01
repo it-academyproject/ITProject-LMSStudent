@@ -13,7 +13,7 @@ namespace LMSStudent.Models
         public string name { get; set; }
         public string surname { get; set; }
         public string email { get; set; }
-        public double type { get; set; }
+        public string type { get; set; }
         public long idItinerary { get; set; }
     }
 }
