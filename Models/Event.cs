@@ -13,7 +13,7 @@ namespace LMSStudent.Models
         public DateTime Date { get; set; }
         public string File { get; set; }
         public bool Online { get; set; }
-        public int? Capacity { get; set; }
+        public int? Capacity { get; set; } = null;
         public string Type { get; set; }
     }
 }
