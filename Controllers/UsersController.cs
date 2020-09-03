@@ -1,59 +1,109 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using LMSStudent.Models;
 
 namespace LMSStudent.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
-    {     
-        // GET: api/users/
+    {
+        private readonly UsersContext _context;
+
+        public UsersController(UsersContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/Users
         [HttpGet]
-        public string Get()
+        public async Task<ActionResult<IEnumerable<Users>>> GetUsersContexts()
         {
-            var salute = "Hello World! From GET: api/users/";
-            return salute;
+            return await _context.UsersContexts.ToListAsync();
         }
 
-        // GET: api/users/1
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public string GetUser(int id)
+        public async Task<ActionResult<Users>> GetUsers(long id)
         {
-            var salute = "Hello World! From GET: api/users/" + id;
-            return salute;
+            var users = await _context.UsersContexts.FindAsync(id);
+
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return users;
         }
 
-        // PUT: api/users/1
+        // PUT: api/Users/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public string PutUser(int id)
+        public async Task<IActionResult> PutUsers(long id, Users users)
         {
-            var salute = "Hello World! From PUT: api/users/" + id;
-            return salute;
+            if (id != users.IdUSer)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(users).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UsersExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // POST: api/users
+        // POST: api/Users
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public string PostUser()
+        public async Task<ActionResult<Users>> PostUsers(Users users)
         {
-            var salute = "Hello World! From POST: api/users";
-            return salute;
+            _context.UsersContexts.Add(users);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetUsers", new { id = users.IdUSer }, users);
         }
 
-        // DELETE: api/users/5
+        // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public string DeleteUser(int id)
+        public async Task<ActionResult<Users>> DeleteUsers(long id)
         {
-            var salute = "Hello World! From DELETE: api/users/" + id;
-            return salute;
+            var users = await _context.UsersContexts.FindAsync(id);
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            _context.UsersContexts.Remove(users);
+            await _context.SaveChangesAsync();
+
+            return users;
+        }
+
+        private bool UsersExists(long id)
+        {
+            return _context.UsersContexts.Any(e => e.IdUSer == id);
         }
     }
-
-    
-
-
 }
