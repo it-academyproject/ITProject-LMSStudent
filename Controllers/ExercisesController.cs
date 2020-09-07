@@ -13,9 +13,9 @@ namespace LMSStudent.Controllers
     [ApiController]
     public class ExercisesController : ControllerBase
     {
-        private readonly LMSStudentDBContext _context;
+        private readonly LMSStudentContext _context;
 
-        public ExercisesController(LMSStudentDBContext context)
+        public ExercisesController(LMSStudentContext context)
         {
             _context = context;
         }

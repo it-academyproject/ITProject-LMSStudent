@@ -13,27 +13,25 @@ namespace LMSStudent.Data
     {
         public static void Initialize(IApplicationBuilder app)
         {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetService<AttendeeContext>();
-                context.Database.EnsureCreated();
+            using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+            var context = serviceScope.ServiceProvider.GetService<LMSStudentContext>();
+            context.Database.EnsureCreated();
 
-                // Look for any events
-                if (context.Events != null && context.Events.Any())
-                    return;
+            // Look for any events
+            if (context.Events != null && context.Events.Any())
+                return;
 
-                var events = GetEvents().ToArray();
-                context.Events.AddRange(events);
-                context.SaveChanges();
+            var events = GetEvents().ToArray();
+            context.Events.AddRange(events);
+            context.SaveChanges();
 
-                var users = GetUsers().ToArray();
-                context.Users.AddRange(users);
-                context.SaveChanges();
+            var users = GetUsers().ToArray();
+            context.Users.AddRange(users);
+            context.SaveChanges();
 
-                var attendees = GetAttendees().ToArray();
-                context.Attendees.AddRange(attendees);
-                context.SaveChanges();
-            }
+            var attendees = GetAttendees().ToArray();
+            context.Attendees.AddRange(attendees);
+            context.SaveChanges();
         }
 
         public static List<Event> GetEvents()
