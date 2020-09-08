@@ -104,7 +104,7 @@ namespace LMSStudent
                 }
             });
 
-            AttendeesDummyData.Initialize(app);
+            DummyData.Initialize(app);
         }
     }
 }

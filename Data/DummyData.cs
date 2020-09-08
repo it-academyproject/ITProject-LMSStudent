@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 // Adapted from https://github.com/medhatelmasry/HealthAPI/blob/master/HealthAPI/Data/DummyData.cs
 namespace LMSStudent.Data
 {
-    public class AttendeesDummyData
+    public class DummyData
     {
         public static void Initialize(IApplicationBuilder app)
         {
@@ -17,8 +17,8 @@ namespace LMSStudent.Data
             var context = serviceScope.ServiceProvider.GetService<LMSStudentContext>();
             context.Database.EnsureCreated();
 
-            // Look for any events
-            if (context.Events != null && context.Events.Any())
+            // Look for any users
+            if (context.Users != null && context.Users.Any())
                 return;
 
             var events = GetEvents().ToArray();
@@ -32,6 +32,24 @@ namespace LMSStudent.Data
             var attendees = GetAttendees().ToArray();
             context.Attendees.AddRange(attendees);
             context.SaveChanges();
+
+            var topics = GetTopics().ToArray();
+            context.Topics.AddRange(topics);
+            context.SaveChanges();
+
+            /*
+            var resources = GetResources().ToArray();
+            context.Resources.AddRange(resources);
+            context.SaveChanges();
+
+            var exercises = GetExercises().ToArray();
+            context.Exercises.AddRange(exercises);
+            context.SaveChanges();
+
+            var teachingMaterials = GetTeachingMaterials().ToArray();
+            context.TeachingMaterials.AddRange(teachingMaterials);
+            context.SaveChanges();
+            */
         }
 
         public static List<Event> GetEvents()
@@ -53,7 +71,7 @@ namespace LMSStudent.Data
                 },
                 new Event { 
                     Name="August holidays", 
-                    Description = "IT Academy closes until August 31st. In the attached file you can find the calendar for Septembler. Happy holidays!", 
+                    Description = "IT Academy closes until 1 September. In the attached file you can find the calendar for September. Happy holidays!", 
                     Date = new DateTime(2020, 7, 30, 13, 0, 0), File = "calendar-september.xlsx", 
                     Online = false, 
                     Type = "Holidays" }
@@ -67,21 +85,21 @@ namespace LMSStudent.Data
                 new User {
                     Name = "Gerard",
                     Surname = "Ferrer",
-                    Email = "gf@gmail.com",
+                    Email = "gf@example.com",
                     Type = "student",
                     IdItinerary = 6
                 },
                 new User {
                     Name = "Oriol",
                     Surname = "Muñiz",
-                    Email = "om@gmail.com",
+                    Email = "om@example.com",
                     Type = "student",
                     IdItinerary = 6
                 },
                 new User {
                     Name = "Francisco Javier",
                     Surname = "Rivas",
-                    Email = "fjr@gmail.com",
+                    Email = "fjr@example.com",
                     Type = "student",
                     IdItinerary = 6
                 }
@@ -105,9 +123,54 @@ namespace LMSStudent.Data
                     IdEvent = 2,
                     IdStudent = 3,
                     Accepted = true
-                },
+                }
             };
             return attendees;
         }
+
+        public static List<Topic> GetTopics()
+        {
+            List<Topic> topics = new List<Topic>() {
+                new Topic {Name = "C#"},
+                new Topic {Name = "ASP.Net"},
+                new Topic {Name = "Java"},
+                new Topic {Name = "JavaScript"},
+                new Topic {Name = "Angular"}
+            };
+            return topics;
+        }
+
+        /*
+        public static List<Resource> GetResources()
+        {
+            List<Resource> resources = new List<Resource>() {
+                new Resource {Name = "Exercise 3", Description = "Exercise 3 desc", File = "pdf", TopicId = 1 },
+                new Resource {Name = "Exercise 2", Description = "Exercise 2 desc", File = "excel", TopicId = 2 },
+                new Resource {Name = "Exercise 1", Description = "Exercise 1 desc", File = "word", TopicId = 2 },
+                new Resource {Name = "TeachingMaterial 2", Description = "TeachingMaterial 2 desc", File = "excel", TopicId = 3 },
+                new Resource {Name = "TeachingMaterial 1", Description = "TeachingMaterial 1 desc", File = "word", TopicId = 3 }
+            };
+            return resources;
+        }
+
+        public static List<Exercise> GetExercises()
+        {
+            List<Exercise> exercises = new List<Exercise>() {
+                new Exercise {AvailableTime = 2, ResourceId = 5},
+                new Exercise {AvailableTime = 2, ResourceId = 4},
+                new Exercise {AvailableTime = 2, ResourceId = 3}
+            };
+            return exercises;
+        }
+
+        public static List<TeachingMaterial> GetTeachingMaterials()
+        {
+            List<TeachingMaterial> teachingMaterials = new List<TeachingMaterial>() {
+                new TeachingMaterial {Type = "Word", Link = "www.itacademy.com", ResourceId = 2},
+                new TeachingMaterial {Type = "Excel", Link = "www.itacademy2.com", ResourceId = 1}
+            };
+            return teachingMaterials;
+        }
+        */
     }
 }

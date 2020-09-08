@@ -15,9 +15,9 @@ namespace LMSStudent.Controllers
     [EnableCors("EventsPolicy")]
     public class EventsController : ControllerBase
     {
-        private readonly EventContext _context;
+        private readonly LMSStudentContext _context;
 
-        public EventsController(EventContext context)
+        public EventsController(LMSStudentContext context)
         {
             _context = context;
         }

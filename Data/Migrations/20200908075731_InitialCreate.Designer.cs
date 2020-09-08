@@ -7,19 +7,71 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace LMSStudent.Migrations
+namespace LMSStudent.Data.Migrations
 {
     [DbContext(typeof(LMSStudentContext))]
-    [Migration("20200724110551_InitialCreate")]
+    [Migration("20200908075731_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("LMSStudent.Models.Attendee", b =>
+                {
+                    b.Property<long>("IdStudent")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("IdEvent")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Accepted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Moment")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("IdStudent", "IdEvent");
+
+                    b.ToTable("Attendees");
+                });
+
+            modelBuilder.Entity("LMSStudent.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("File")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Online")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
+                });
 
             modelBuilder.Entity("LMSStudent.Models.Exercise", b =>
                 {
@@ -105,6 +157,33 @@ namespace LMSStudent.Migrations
                     b.ToTable("Topics");
                 });
 
+            modelBuilder.Entity("LMSStudent.Models.User", b =>
+                {
+                    b.Property<long>("IdUser")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("IdItinerary")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdUser");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("LMSStudent.Models.Exercise", b =>
                 {
                     b.HasOne("LMSStudent.Models.Resource", "Resource")
@@ -115,7 +194,7 @@ namespace LMSStudent.Migrations
             modelBuilder.Entity("LMSStudent.Models.Resource", b =>
                 {
                     b.HasOne("LMSStudent.Models.Topic", "Topic")
-                        .WithMany("Resources")
+                        .WithMany()
                         .HasForeignKey("TopicId");
                 });
 
