@@ -13,6 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "progress": true,
+            "extractCss": true,
             "outputPath": "dist/LMSStudent",
             "index": "src/index.html",
             "main": "src/main.ts",
