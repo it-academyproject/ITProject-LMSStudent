@@ -13,9 +13,9 @@ namespace LMSStudent.Controllers
     [ApiController]
     public class TeachingMaterialsController : ControllerBase
     {
-        private readonly LMSStudentDBContext _context;
+        private readonly LMSStudentContext _context;
 
-        public TeachingMaterialsController(LMSStudentDBContext context)
+        public TeachingMaterialsController(LMSStudentContext context)
         {
             _context = context;
         }

@@ -13,25 +13,25 @@ namespace LMSStudent.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UsersContext _context;
+        private readonly LMSStudentContext _context;
 
-        public UsersController(UsersContext context)
+        public UsersController(LMSStudentContext context)
         {
             _context = context;
         }
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> GetUsersContexts()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsersContexts()
         {
-            return await _context.UsersContexts.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(long id)
+        public async Task<ActionResult<User>> GetUsers(long id)
         {
-            var users = await _context.UsersContexts.FindAsync(id);
+            var users = await _context.Users.FindAsync(id);
 
             if (users == null)
             {
@@ -45,9 +45,9 @@ namespace LMSStudent.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(long id, Users users)
+        public async Task<IActionResult> PutUsers(long id, User users)
         {
-            if (id != users.IdUSer)
+            if (id != users.IdUser)
             {
                 return BadRequest();
             }
@@ -77,25 +77,25 @@ namespace LMSStudent.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<ActionResult<User>> PostUsers(User users)
         {
-            _context.UsersContexts.Add(users);
+            _context.Users.Add(users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = users.IdUSer }, users);
+            return CreatedAtAction("GetUsers", new { id = users.IdUser }, users);
         }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Users>> DeleteUsers(long id)
+        public async Task<ActionResult<User>> DeleteUsers(long id)
         {
-            var users = await _context.UsersContexts.FindAsync(id);
+            var users = await _context.Users.FindAsync(id);
             if (users == null)
             {
                 return NotFound();
             }
 
-            _context.UsersContexts.Remove(users);
+            _context.Users.Remove(users);
             await _context.SaveChangesAsync();
 
             return users;
@@ -103,7 +103,7 @@ namespace LMSStudent.Controllers
 
         private bool UsersExists(long id)
         {
-            return _context.UsersContexts.Any(e => e.IdUSer == id);
+            return _context.Users.Any(e => e.IdUser == id);
         }
     }
 }

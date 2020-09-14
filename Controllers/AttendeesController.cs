@@ -13,9 +13,9 @@ namespace LMSStudent.Controllers
     [ApiController]
     public class AttendeesController : ControllerBase
     {
-        private readonly AttendeeContext _context;
+        private readonly LMSStudentContext _context;
 
-        public AttendeesController(AttendeeContext context)
+        public AttendeesController(LMSStudentContext context)
         {
             _context = context;
         }
