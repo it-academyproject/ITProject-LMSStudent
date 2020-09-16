@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { ResourceComponent } from './models/resource/resource.component';
 import { EventComponent } from './models/event/event.component';
 import { UserComponent } from './models/user/user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { UserComponent } from './models/user/user.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

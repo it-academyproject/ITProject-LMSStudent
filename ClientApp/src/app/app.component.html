@@ -1,7 +1,15 @@
-<h1>{{title}}</h1>
-<nav>
-  <button routerLink="/user">Users</button>
-  <button routerLink="/resource">Resources</button>
-  <button routerLink="/event">Events</button>
+<h1 style="text-align:center">{{title}}</h1>
+<nav mat-tab-nav-bar [backgroundColor]="background">
+  <a mat-tab-link
+    (click)="activeLink = 'user'"
+    [active]="activeLink == 'user'"
+    routerLink = '/user'> Users </a>
+  <a mat-tab-link
+    (click)="activeLink = 'event'"
+    [active]="activeLink == 'event'"
+    routerLink = '/event'> Events </a>
 </nav>
+<div class="footer">
+  <p>IT Academy - 2020</p>
+</div>
 <router-outlet></router-outlet>
