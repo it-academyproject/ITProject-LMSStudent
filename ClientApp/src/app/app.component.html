@@ -1,15 +1,26 @@
-<h1 style="text-align:center">{{title}}</h1>
-<nav mat-tab-nav-bar [backgroundColor]="background">
-  <a mat-tab-link
-    (click)="activeLink = 'user'"
-    [active]="activeLink == 'user'"
-    routerLink = '/user'> Users </a>
-  <a mat-tab-link
-    (click)="activeLink = 'event'"
-    [active]="activeLink == 'event'"
-    routerLink = '/event'> Events </a>
-</nav>
-<div class="footer">
-  <p>IT Academy - 2020</p>
+<h1>{{title}}</h1>
+<div>
+  <ul>
+    <li *ngIf="!isLogged()" [routerLinkActive]='["link-active"]'>
+      <a [routerLink]='["/login"]' (click)='collapse()'>
+        <span></span> Sign Up / Sign In
+      </a>
+    </li>
+    <li *ngIf="isLogged()"> {{ userType }}</li>
+    <li *ngIf="isLogged()" [routerLinkActive]='["link-active"]'>      
+      <a (click)='logout()'>
+        <span></span> Log Out
+      </a>
+    </li>
+</ul>
 </div>
+<nav *ngIf="userType == 'admin'">
+  <button routerLink="/user">Users</button>
+  <button routerLink="/event">Events</button>
+</nav>
+<nav *ngIf="userType == 'student'">
+  <button routerLink="/resource">Resources</button>
+  <button routerLink="/event">Events</button>
+</nav>
+<nav *ngIf="userType == ''"></nav>
 <router-outlet></router-outlet>
