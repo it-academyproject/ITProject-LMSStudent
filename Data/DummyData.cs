@@ -86,7 +86,7 @@ namespace LMSStudent.Data
                     Name = "Gerard",
                     Surname = "Ferrer",
                     Email = "gf@example.com",
-                    Type = "student",
+                    Type = "admin",
                     IdItinerary = 6
                 },
                 new User {

@@ -1,5 +1,20 @@
 <h1 style="text-align:center">{{title}}</h1>
-<nav mat-tab-nav-bar [backgroundColor]="background">
+<div>
+  <ul>
+    <li *ngIf="!isLogged()" [routerLinkActive]='["link-active"]'>
+      <a [routerLink]='["/login"]' (click)='collapse()'>
+        <span></span> Sign Up / Sign In
+      </a>
+    </li>
+    <li *ngIf="isLogged()"> {{ userType }}</li>
+    <li *ngIf="isLogged()" [routerLinkActive]='["link-active"]'>      
+      <a (click)='logout()'>
+        <span></span> Log Out
+      </a>
+    </li>
+</ul>
+</div>
+<nav *ngIf="userType == 'admin'" mat-tab-nav-bar [backgroundColor]="background">
   <a mat-tab-link
     (click)="activeLink = 'user'"
     [active]="activeLink == 'user'"
@@ -9,6 +24,17 @@
     [active]="activeLink == 'event'"
     routerLink = '/event'> Events </a>
 </nav>
+<nav *ngIf="userType == 'student'" mat-tab-nav-bar [backgroundColor]="background">
+  <a mat-tab-link
+    (click)="activeLink = 'resource'"
+    [active]="activeLink == 'resource'"
+    routerLink = '/resource'> Resources </a>
+  <a mat-tab-link
+    (click)="activeLink = 'event'"
+    [active]="activeLink == 'event'"
+    routerLink = '/event'> Events </a>
+</nav>
+<nav *ngIf="userType == ''"></nav>
 <div class="footer">
   <p>IT Academy - 2020</p>
 </div>
