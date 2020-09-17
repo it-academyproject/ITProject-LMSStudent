@@ -10,13 +10,23 @@ import { UserComponent } from './models/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { EventsCalendarComponent } from './models/events-calendar/events-calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
     AppComponent,
     ResourceComponent,
     EventComponent,
-    UserComponent
+    UserComponent,
+    EventsCalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +34,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
