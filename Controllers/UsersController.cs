@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 namespace LMSStudent.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -72,6 +72,7 @@ namespace LMSStudent.Controllers
             user.Name = userDTO.Name;
             user.Surname = userDTO.Surname;
             user.Email = userDTO.Email;
+            user.Type = userDTO.Type;
             user.ItineraryId = itinerary.Id;
 
             _context.Entry(user).State = EntityState.Modified;
