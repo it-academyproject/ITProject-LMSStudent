@@ -25,6 +25,10 @@ namespace LMSStudent.Data
             context.Events.AddRange(events);
             context.SaveChanges();
 
+            var itineraries = GetItineraries().ToArray();
+            context.Itineraries.AddRange(itineraries);
+            context.SaveChanges();
+
             var users = GetUsers().ToArray();
             context.Users.AddRange(users);
             context.SaveChanges();
@@ -79,29 +83,61 @@ namespace LMSStudent.Data
             return events;
         }
 
+        public static List<Itinerary> GetItineraries()
+        {
+            List<Itinerary> itineraries = new List<Itinerary>() {
+                new Itinerary {
+                    Name = ".Net",                    
+                },
+                new Itinerary {
+                    Name = "Java",
+                },
+                new Itinerary {
+                    Name = "FrontEnd React",
+                },
+                new Itinerary {
+                    Name = "FrontEnd Angular",
+                },
+                new Itinerary {
+                    Name = "FrontEnd",
+                },
+                new Itinerary {
+                    Name = "Common Block",
+                }
+            };
+            return itineraries;
+        }
+
         public static List<User> GetUsers()
         {
             List<User> users = new List<User>() {
                 new User {
+                    Name = "Rubén",
+                    Surname = "Alcalde",
+                    Email = "ra@example.com",
+                    Type = "Admin",
+                    ItineraryId = 2
+                },
+                new User {
                     Name = "Gerard",
                     Surname = "Ferrer",
                     Email = "gf@example.com",
-                    Type = "Admin",
-                    ItineraryId = 1
+                    Type = "Student",
+                    ItineraryId = 3
                 },
                 new User {
                     Name = "Oriol",
                     Surname = "Muñiz",
                     Email = "om@example.com",
                     Type = "Student",
-                    ItineraryId = 1
+                    ItineraryId = 3
                 },
                 new User {
                     Name = "Francisco Javier",
                     Surname = "Rivas",
                     Email = "fjr@example.com",
                     Type = "Student",
-                    ItineraryId = 1
+                    ItineraryId = 6
                 }
             };
             return users;

@@ -47,7 +47,7 @@ namespace LMSStudent.Controllers
             }
 
             return UserToDTO(user);
-        }
+        }        
 
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

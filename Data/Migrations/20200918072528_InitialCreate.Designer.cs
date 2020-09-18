@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMSStudent.Data.Migrations
 {
     [DbContext(typeof(LMSStudentContext))]
-    [Migration("20200917145831_InitialCreate")]
+    [Migration("20200918072528_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

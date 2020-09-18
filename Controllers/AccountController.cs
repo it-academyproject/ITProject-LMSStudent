@@ -123,21 +123,21 @@ namespace LMSStudent.Controllers
                expires: expiration,
                signingCredentials: creds);
 
-            var userType = GetUserType(userInfo);
+            var user = GetUser(userInfo);
             
             return Ok(new
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token),
                 expiration = expiration,
-                userType = userType
+                userType = user.Type,
+                userName = user.Name + ' ' + user.Surname
             });
         }
-
-        private string GetUserType(UserInfo userInfo)
+        public User GetUser(UserInfo userInfo)
         {
-            var userType = _context.Users.SingleOrDefault(u => u.Email == userInfo.Email).Type;
-            
-            return userType;
+            var user = _context.Users.SingleOrDefault(u => u.Email == userInfo.Email);
+
+            return user;
         }
     }
 }

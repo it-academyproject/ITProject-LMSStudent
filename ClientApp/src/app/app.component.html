@@ -6,10 +6,10 @@
         <span></span> Sign Up / Sign In
       </a>
     </li>
-    <li *ngIf="isLogged()"> {{ userType }}</li>
+    <li *ngIf="isLogged()">{{ userName }} - {{ userType }}</li>
     <li *ngIf="isLogged()" [routerLinkActive]='["link-active"]'>      
-      <a (click)='logout()'>
-        <span></span> Log Out
+      <a [routerLink]='["/login"]' (click)='logout()'>
+        Log Out
       </a>
     </li>
 </ul>
