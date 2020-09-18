@@ -9,6 +9,7 @@ using LMSStudent.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -37,26 +38,46 @@ namespace LMSStudent.Controllers
 
         [Route("Create")]
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody] UserInfo model)
+        public async Task<IActionResult> CreatePassword([FromBody] UserInfo model)
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var user = _context.Users.SingleOrDefault(u => u.Email == model.Email);
+
+                if (user == default)
+                {
+                    ModelState.AddModelError(string.Empty, "Email not registered");
+                    return BadRequest(ModelState);
+                }
+                
+                user.UserName = model.Email;
+
+                if(user.PasswordHash != null)
+                {
+                    ModelState.AddModelError(string.Empty, "User already registered. Please sign in");
+                    return BadRequest(ModelState);
+                }
+                
+                var hasher = new PasswordHasher<IdentityUser>();
+
+                user.PasswordHash = hasher.HashPassword(user, model.Password);
+
+                _context.Entry(user).State = EntityState.Modified;
+
+                var result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
                     return BuildToken(model);
                 }
                 else
                 {
-                    return BadRequest("Username or password invalid");
+                    return BadRequest(ModelState);
                 }
             }
             else
             {
                 return BadRequest(ModelState);
             }
-
         }
 
         [HttpPost]

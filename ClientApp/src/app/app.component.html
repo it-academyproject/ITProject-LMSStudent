@@ -14,7 +14,7 @@
     </li>
 </ul>
 </div>
-<nav *ngIf="userType == 'admin'" mat-tab-nav-bar [backgroundColor]="background">
+<nav *ngIf="userType == 'Admin'" mat-tab-nav-bar [backgroundColor]="background">
   <a mat-tab-link
     (click)="activeLink = 'user'"
     [active]="activeLink == 'user'"
@@ -24,7 +24,7 @@
     [active]="activeLink == 'event'"
     routerLink = '/event'> Events </a>
 </nav>
-<nav *ngIf="userType == 'student'" mat-tab-nav-bar [backgroundColor]="background">
+<nav *ngIf="userType == 'Student'" mat-tab-nav-bar [backgroundColor]="background">
   <a mat-tab-link
     (click)="activeLink = 'resource'"
     [active]="activeLink == 'resource'"

@@ -1,0 +1,64 @@
+<h3>{{editionMode ? 'Detail' : 'New'}} User</h3>
+<form class="form-horizontal" novalidate
+    (ngSubmit)="save()" [formGroup]="formGroup">
+      <div class="form-group">
+        <label for="nameId">Name</label>
+        <div>
+          <input class="form-control"
+          id="nameId"
+          type="text"
+          required
+          formControlName="name"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="surnameId">Surname</label>
+        <div>
+          <input class="form-control"
+          id="surnameId"
+          type="text"
+          required
+          formControlName="surname"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="emailId">Email</label>
+        <div>
+          <input class="form-control"
+          id="emailId"
+          type="text"
+          required
+          formControlName="email"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="typeId">Type</label>
+        <div>
+          <select class="form-control"
+          id="typeId"
+          formControlName="type">
+            <option>Admin</option>
+            <option>Student</option>
+            <option>Teacher</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="itineraryId">Itinerary</label>
+        <div>
+          <select class="form-control"
+          id="itineraryId"
+          formControlName="itinerary">
+          <option *ngFor="let itinerary of itineraries">{{ itinerary.name }}</option>
+        </select>
+        </div>
+      </div>      
+      <div class="form-group">
+        <div>
+          <button type="submit">Save</button>
+        </div>
+      </div>
+</form>
+
+<button (click)="goBack()">Go Back</button>
+

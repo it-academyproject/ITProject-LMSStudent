@@ -86,22 +86,22 @@ namespace LMSStudent.Data
                     Name = "Gerard",
                     Surname = "Ferrer",
                     Email = "gf@example.com",
-                    Type = "admin",
-                    IdItinerary = 6
+                    Type = "Admin",
+                    ItineraryId = 1
                 },
                 new User {
                     Name = "Oriol",
                     Surname = "Muñiz",
                     Email = "om@example.com",
-                    Type = "student",
-                    IdItinerary = 6
+                    Type = "Student",
+                    ItineraryId = 1
                 },
                 new User {
                     Name = "Francisco Javier",
                     Surname = "Rivas",
                     Email = "fjr@example.com",
-                    Type = "student",
-                    IdItinerary = 6
+                    Type = "Student",
+                    ItineraryId = 1
                 }
             };
             return users;

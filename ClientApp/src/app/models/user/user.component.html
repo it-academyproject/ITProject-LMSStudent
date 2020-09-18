@@ -1,1 +1,24 @@
-<p>user works!</p>
+<button [routerLink]='["/single-user"]' class="btn-add">New user</button>
+
+<p *ngIf="!users"><em>Loading...</em></p>
+
+<table *ngIf="users">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }} {{ user.surname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.type }}</td>        
+      <td><button routerLink="/single-user/{{user.id}}"
+        class="btn-update" title="update user">Update</button></td>
+      <td><button class="btn-delete" title="delete user"
+        (click)="delete(user)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
