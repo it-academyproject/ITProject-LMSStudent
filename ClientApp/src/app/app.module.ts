@@ -16,6 +16,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DashboardComponent } from './models/dashboard/dashboard.component';
+import { EventsCalendarComponent } from './models/events-calendar/events-calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -24,7 +33,8 @@ import { DashboardComponent } from './models/dashboard/dashboard.component';
     EventComponent,
     UserComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    EventsCalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +44,8 @@ import { DashboardComponent } from './models/dashboard/dashboard.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    FullCalendarModule
   ],
   providers: [    
     AuthGuardService,
