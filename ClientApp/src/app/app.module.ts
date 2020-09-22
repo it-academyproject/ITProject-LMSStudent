@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DashboardComponent } from './models/dashboard/dashboard.component';
+import { UserService } from './models/user/user.service';
+import { SingleUserComponent } from './models/user/single-user/single-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { DashboardComponent } from './models/dashboard/dashboard.component';
     EventComponent,
     UserComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SingleUserComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { DashboardComponent } from './models/dashboard/dashboard.component';
     MatTabsModule,
     MatSidenavModule
   ],
-  providers: [    
+  providers: [
+    UserService,
     AuthGuardService,
     AccountService,
     {

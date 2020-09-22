@@ -25,37 +25,57 @@ namespace LMSStudent.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsersContexts()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Include(u => u.Itinerary)
+                .Select(u => UserToDTO(u))
+                .ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUsers(long id)
+        public async Task<ActionResult<UserDTO>> GetUser(string id)
         {
-            var users = await _context.Users.FindAsync(id);
+            var user = await _context.Users
+                .Include(u => u.Itinerary)
+                .SingleOrDefaultAsync(u => u.Id == id);
 
-            if (users == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return users;
-        }
+            return UserToDTO(user);
+        }        
 
         // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(long id, User users)
+        public async Task<IActionResult> PutUser(string id, UserDTO userDTO)
         {
-            if (id != users.IdUser)
+            if (id != userDTO.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(users).State = EntityState.Modified;
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var itinerary = await _context.Itineraries.SingleOrDefaultAsync(u => u.Name == userDTO.Itinerary);
+            
+            user.Name = userDTO.Name;
+            user.Surname = userDTO.Surname;
+            user.Email = userDTO.Email;
+            user.Type = userDTO.Type;
+            user.ItineraryId = itinerary.Id;
+
+            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +83,7 @@ namespace LMSStudent.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsersExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -80,33 +100,56 @@ namespace LMSStudent.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<User>> PostUsers(User users)
+        public async Task<ActionResult<User>> PostUser(UserDTO userDTO)
         {
-            _context.Users.Add(users);
+            var itinerary = await _context.Itineraries.SingleOrDefaultAsync(u => u.Name == userDTO.Itinerary);
+
+            var user = new User
+            {
+                Name = userDTO.Name,
+                Surname = userDTO.Surname,
+                Email = userDTO.Email,
+                Type = userDTO.Type,
+                ItineraryId = itinerary.Id,
+            };
+            
+            _context.Users.Add(user);
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsers", new { id = users.IdUser }, users);
+            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, UserToDTO(user));
         }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUsers(long id)
+        public async Task<ActionResult<User>> DeleteUser(string id)
         {
-            var users = await _context.Users.FindAsync(id);
-            if (users == null)
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(users);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return users;
+            return user;
         }
 
-        private bool UsersExists(long id)
+        private bool UserExists(string id)
         {
-            return _context.Users.Any(e => e.IdUser == id);
+            return _context.Users.Any(u => u.Id == id);
         }
+
+        private static UserDTO UserToDTO(User user) =>
+            new UserDTO
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Surname = user.Surname,
+                Email = user.Email,
+                Type = user.Type,
+                Itinerary = user.Itinerary.Name
+            };
     }
 }

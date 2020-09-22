@@ -23,6 +23,7 @@ namespace LMSStudent.Models
         public virtual DbSet<Topic> Topics { get; set; }
         public DbSet<Attendee> Attendees { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Itinerary> Itineraries { get; set; }
         public DbSet<Event> Events { get; set; }
     }
 }

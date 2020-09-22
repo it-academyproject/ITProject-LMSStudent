@@ -18,6 +18,7 @@ export class AppComponent {
 
     isExpanded = false;
     public userType = '';
+    public userName = '';
 
     collapse() {
       this.isExpanded = false;
@@ -30,12 +31,13 @@ export class AppComponent {
     logout() {
       this.accountService.logout();
       this.userType = '';
-      this.router.navigate(['/login']);
+      this.userName = '';
     }
 
     isLogged() {
       if (this.accountService.isLogged()) {
         this.userType = localStorage.getItem('userType');
+        this.userName = localStorage.getItem('userName');
         return true;
       }
        return false;
